@@ -8,7 +8,6 @@ WINDOW_HEIGHT = 600
 WINDOW_WIDTH = 600
 WINDOW_POSITION = 800
 
-
 screen = Screen()
 screen.setup(width=WINDOW_WIDTH, height=WINDOW_HEIGHT, startx=WINDOW_POSITION)
 screen.title("My Snake Game")
@@ -30,7 +29,6 @@ screen.onkey(key='q', fun=screen.bye)
 game_not_finished = True
 while game_not_finished:
     my_snake.move()
-
 
     # Detect Collision with food
     distance_to_food = my_food.distance(my_snake.head)

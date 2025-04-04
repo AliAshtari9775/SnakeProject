@@ -20,7 +20,7 @@ class ScoreBoard(Turtle):
         self.penup()
         self.speed('fastest')
         self.setpos(x=X_COR, y=Y_COR)
-        with open("data.txt",mode='r') as file:
+        with open("data.txt", mode='r') as file:
             self.highscore = int(file.read())
         self.score = INITIAL_SCORE
         self.update_write()
@@ -39,7 +39,7 @@ class ScoreBoard(Turtle):
     def reset_scoreboard(self):
         if self.score > self.highscore:
             self.highscore = self.score
-            with open("data.txt",mode='w') as file:
+            with open("data.txt", mode='w') as file:
                 file.write(f"{self.highscore}")
         self.score = INITIAL_SCORE
         self.update_score()
