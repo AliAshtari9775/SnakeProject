@@ -1,4 +1,3 @@
-import time
 from turtle import Screen
 
 import food
@@ -10,16 +9,13 @@ WINDOW_WIDTH = 600
 WINDOW_POSITION = 800
 
 
-def finish_game():
-    # seg_list = my_snake.segments_list
-    # for i in range(my_snake.segments):
-    #     seg_list[i].setposition(x=(i - 1) * 40, y=0)
-    my_scoreboard.game_over()
-    global game_not_finished
-    game_not_finished = False
-    screen.update()
-    time.sleep(3)
-    screen.bye()
+# def finish_game():
+#     my_scoreboard.game_over()
+#     global game_not_finished
+#     game_not_finished = False
+#     screen.update()
+#     time.sleep(3)
+#     screen.bye()
 
 
 screen = Screen()
@@ -38,26 +34,36 @@ screen.onkey(key='Right', fun=my_snake.right)
 screen.onkey(key='Up', fun=my_snake.up)
 screen.onkey(key='Down', fun=my_snake.down)
 screen.onkey(key='Left', fun=my_snake.left)
-screen.onkey(key='q', fun=finish_game)
+screen.onkey(key='q', fun=screen.bye)
 
 game_not_finished = True
 while game_not_finished:
     my_snake.move()
-    screen.update()
+
 
     # Detect Collision with food
     distance_to_food = my_food.distance(my_snake.head)
     if distance_to_food <= my_food.smallest_distance:
         my_food.change_food_location()
-        my_scoreboard.update_score()
+        my_scoreboard.increase_score()
         my_snake.extend()
+
     # Detect Collision with wall
     if my_snake.wall_collision():
         print("You hit the wall!")
-        finish_game()
-    print(my_snake.segments)
+        # game_not_finished = False
+        # my_scoreboard.game_over()
+        my_snake.reset_snake()
+        my_scoreboard.reset_scoreboard()
+
     # Detect Collision with tail
     for segment in my_snake.segments_list[1:]:
         if my_snake.head.distance(segment) < 5:
             print("You hit your tail")
-            finish_game()
+            # game_not_finished = False
+            # my_scoreboard.game_over()
+            my_snake.reset_snake()
+            my_scoreboard.reset_scoreboard()
+
+    screen.update()
+screen.exitonclick()

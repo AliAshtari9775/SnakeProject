@@ -20,14 +20,17 @@ INITIAL_POSITION = [(0, 0), (-20, 0), (-40, 0)]
 class Snake:
 
     def __init__(self):
-        self.segments_list = []
+        self.segments_list= []
+
         self.segments = NUMBER_OF_SEGMENTS
         self.delay = DELAY
         self.size = SIZE
         self.heading = INITIAL_HEADING
         self.positions = INITIAL_POSITION
+
         self.create_snake()
         self.head = self.segments_list[0]
+
         self.head_angle = self.head.heading()
         self.head_position = self.head.position()
 
@@ -51,6 +54,21 @@ class Snake:
             # screen.update()
         self.head_position = self.head.position()
         self.head_angle = self.head.heading()
+
+    def reset_snake(self):
+        for segment in self.segments_list:
+            segment.goto(1000,1000)
+        time.sleep(DELAY*5)
+        self.segments_list = []
+        self.segments = NUMBER_OF_SEGMENTS
+        self.delay = DELAY
+        self.size = SIZE
+        self.heading = INITIAL_HEADING
+        self.positions = INITIAL_POSITION
+        self.create_snake()
+        self.head = self.segments_list[0]
+        self.head_angle = self.head.heading()
+        self.head_position = self.head.position()
 
     def up(self):
         if self.head.heading() != DOWN:
