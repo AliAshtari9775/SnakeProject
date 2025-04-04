@@ -9,15 +9,6 @@ WINDOW_WIDTH = 600
 WINDOW_POSITION = 800
 
 
-# def finish_game():
-#     my_scoreboard.game_over()
-#     global game_not_finished
-#     game_not_finished = False
-#     screen.update()
-#     time.sleep(3)
-#     screen.bye()
-
-
 screen = Screen()
 screen.setup(width=WINDOW_WIDTH, height=WINDOW_HEIGHT, startx=WINDOW_POSITION)
 screen.title("My Snake Game")
@@ -50,18 +41,12 @@ while game_not_finished:
 
     # Detect Collision with wall
     if my_snake.wall_collision():
-        print("You hit the wall!")
-        # game_not_finished = False
-        # my_scoreboard.game_over()
         my_snake.reset_snake()
         my_scoreboard.reset_scoreboard()
 
     # Detect Collision with tail
     for segment in my_snake.segments_list[1:]:
         if my_snake.head.distance(segment) < 5:
-            print("You hit your tail")
-            # game_not_finished = False
-            # my_scoreboard.game_over()
             my_snake.reset_snake()
             my_scoreboard.reset_scoreboard()
 

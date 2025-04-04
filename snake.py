@@ -20,7 +20,7 @@ INITIAL_POSITION = [(0, 0), (-20, 0), (-40, 0)]
 class Snake:
 
     def __init__(self):
-        self.segments_list= []
+        self.segments_list = []
 
         self.segments = NUMBER_OF_SEGMENTS
         self.delay = DELAY
@@ -57,8 +57,8 @@ class Snake:
 
     def reset_snake(self):
         for segment in self.segments_list:
-            segment.goto(1000,1000)
-        time.sleep(DELAY*5)
+            segment.goto(1000, 1000)
+        time.sleep(DELAY * 5)
         self.segments_list = []
         self.segments = NUMBER_OF_SEGMENTS
         self.delay = DELAY

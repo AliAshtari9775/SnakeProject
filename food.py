@@ -23,7 +23,6 @@ class Food(Turtle):
         self.setpos(x=random_x, y=random_y)
         self.speed('fastest')
         self.smallest_distance = DISTANCE
-        # self.smallest_distance = 3 * math.sqrt(2) * (10 * self.shapesize()[0])
 
     def change_food_location(self):
         random_x = random.randint(-CANVAS_WIDTH // 2 + WIGGLE_ROOM, CANVAS_WIDTH // 2 - WIGGLE_ROOM)
